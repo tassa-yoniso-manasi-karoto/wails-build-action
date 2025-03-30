@@ -43,6 +43,10 @@ inputs:
     description: "Obfuscate the build"
     required: false
     default: "false"
+  build-windowsconsole:
+    description: "Keep the console window for Windows builds"
+    required: false
+    default: "false"
   wails-version:
     description: "Wails version to use"
     required: false
@@ -148,6 +152,9 @@ runs:
         fi
         if ${{ inputs.build-obfuscate == 'true' }}; then
           build_options+=' -obfuscated'
+        fi
+        if ${{ inputs.build-windowsconsole == 'true' }}; then
+          build_options+=' -windowsconsole'
         fi
         if [[ "${{ inputs.build-tags }}" != "false" ]]; then
           tags_string="${{ inputs.build-tags }}"
