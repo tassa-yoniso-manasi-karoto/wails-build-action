@@ -32,7 +32,7 @@ inputs:
     required: false
     default: "false"
   build-ldflags:
-    description: "Additional ldflags to pass to Go compiler. Must be quoted"
+    description: "Additional ldflags to pass to Go compiler."
     required: false
     default: "false"
   build-platform:
@@ -156,7 +156,7 @@ runs:
         fi
         if [[ "${{ inputs.build-ldflags }}" != "false" ]]; then
           ldflags_string="${{ inputs.build-ldflags }}"
-          build_options+=" -ldflags=$ldflags_string"
+          build_options+=" -ldflags='$ldflags_string'"
         fi
         if ${{ inputs.build-obfuscate == 'true' }}; then
           build_options+=' -obfuscated'
